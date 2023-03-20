@@ -13,7 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  await dotenv.load(fileName: "production.env");
+  await dotenv.load(fileName: "staging.env");
   if (!AppConfig.isWeb) {
     if (Platform.isAndroid) {
       await FlutterDisplayMode.setHighRefreshRate();
@@ -25,6 +25,6 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );*/
 
-  AppConfig.appFlavor = Flavor.PRODUCTION;
+  AppConfig.appFlavor = Flavor.STAGING;
   runApp(MyApp(accessToken: prefs.getString(Constants.accessToken).orEmpty));
 }
